@@ -1,8 +1,8 @@
 # FDR High School - AP CS A
 
-## Last Name: 
-## First Name: 
-## GitHub Username:
+## Last Name: Chen
+## First Name: XinBao
+## GitHub Username: XinBao321
 
 
 ### General Workflow: 
