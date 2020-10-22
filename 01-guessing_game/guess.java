@@ -46,9 +46,9 @@ class Main {
         }
         guess = in.nextInt();
         attempt++;
-    }
+    } // end while loop
       if (guess == answer){
       System.out.println("That's Correct  it took you " + attempt +   " attempts  to get it right!" );
       }
-  }
-}
+  } //main method
+}  // end class

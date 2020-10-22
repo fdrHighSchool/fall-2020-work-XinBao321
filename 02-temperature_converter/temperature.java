@@ -23,5 +23,5 @@ import java.util.Scanner;
        System.out.println(" Degree Celsius is equal to " + fahrenheit + " in Fahrenheit");
 
 
-    }
-  }
+    } // end main
+  } // end class
