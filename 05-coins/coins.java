@@ -1,11 +1,9 @@
-//Xin Bao, Max Koltovskiy
-
 import java.util.*;
 
 
-class Coins {
+class Main{
   public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);//scanner
     String userName;
     //greet the user with a personalized message
     System.out.println("Hello, Welcome to the game!");//greetings
@@ -16,7 +14,7 @@ class Coins {
     int coins = 100; //give the user 100 base coins
 
 
-    while(1==1){ //always true
+      while(true){ //always true
 
       System.out.println("What would you like to do " +userName+ "?");
       System.out.println("1. play");
@@ -26,7 +24,7 @@ class Coins {
 
       if(user == 1){   //if user wants to play
         coins += play(coins,userName);
-        System.out.println("You now have " +coins+ " coins!");//tells user new amountof coins
+        System.out.println("You now have " +coins+ " coins!");//tells user new amount of coins
       }
       else if(user == 2){ // if user wants to go to the shop
         coins -= shop(coins,userName);
@@ -34,8 +32,8 @@ class Coins {
       }
       else if(user == 3){// if user wants to finish playing
         System.out.println("Thank you for playing, you finished with " + coins + " coins");
-        System.out.println("Byeee"); //saying goodbye
-        break;
+        System.out.println("Byeee"); //saying goodbye , and telling the amount of coins at the end of the game
+        break; // ending the whole game
       }
     }
 
@@ -47,6 +45,7 @@ class Coins {
   * amount of coins for playing
   * Input: number of coins and username
   * Return: a random number of coins the user won that round
+  * NPIR
   */
   public static int play(int coins,String userName){
     Random rand = new Random();
@@ -63,11 +62,12 @@ class Coins {
    * Purpose: simulate a shop in a game
    * Input: number of coins and username
    * Return: cost of the chosen item
+   * NPIR
    */
   public static int shop(int coins,String userName){
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);//scanner
 
-    System.out.println("You have: " + coins+ "coins");
+    System.out.println("You have: " + coins+ " coins");
     System.out.println("What item do you want to buy, " +userName);// personalized statement
     System.out.println("1. Common item: 50 coins");// the common item available for purchase
     System.out.println("2. Rare item: 100 coins");// the rare item available for purchase
