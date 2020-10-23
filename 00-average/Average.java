@@ -20,6 +20,6 @@ class GPA{
 
       }
       int average = total / manyGrade;
-      System.out.println("Your average is " + average);
+      System.out.println("Your average is " + average + "!!");
     }
 }
