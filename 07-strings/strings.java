@@ -1,4 +1,4 @@
-class strings {
+class Strings {
   public static void main(String[] args) {
     String n = "myself";
     String w = "Cool Word";
