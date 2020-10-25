@@ -1,17 +1,14 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.lang.Math; // import the Scanner class
-
-class Main {
-
+class Main{
   public static void main(String[] args) {
+
     //Initial Number Variables
     String name;
-    int guess;
-    int highest;
-    int lowest;
-    int range;
+    int guess, highest, lowest , range;
     int attempt = 0;
+
 
 
     Scanner in = new Scanner(System.in);
@@ -39,16 +36,18 @@ class Main {
 
       if (answer < guess) {
           System.out.println("The answer is smaller than "   + guess +   " Try again");
-        }
+          guess = in.nextInt();
 
-      if (answer > guess) {
+      } //end of if loop
+
+       if (answer > guess) {
           System.out.println("The answer is bigger than "  + guess +   " Try again");
-        }
-        guess = in.nextInt();
-        attempt++;
-    } // end while loop
+          guess = in.nextInt();
+          attempt++;
+       } //end of if loop
+    } // end of while loop
       if (guess == answer){
-      System.out.println("That's Correct  it took you " + attempt +   " attempts  to get it right!" );
-      }
+      System.out.println("That's Correct  it took you " + attempt +   " more  attempts  to get it right!" );
+    } // end of if loop
   } //main method
 }  // end class

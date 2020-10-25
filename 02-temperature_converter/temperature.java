@@ -15,8 +15,6 @@ import java.util.Scanner;
        fahrenheit = answer.nextFloat();
        celsius = ((fahrenheit-32)*5)/9;
        System.out.println( " Degree Fahrenheit is equal to " + celsius +  " in Celsius");
-
-       System.out.println("\n");
        System.out.println("Input a degree in Celsius: ");
        celsius = answer.nextFloat();
        fahrenheit = celsius * 9/5 + 32;
