@@ -13,7 +13,7 @@ class GPA{
 
     for(int f = 0; f <  manyGrade; f++){
       System.out.println("What grade did you got? ");
-      int grade = input.nextDouble();
+      double grade = input.nextDouble();
       total = (total + grade);
 
 
