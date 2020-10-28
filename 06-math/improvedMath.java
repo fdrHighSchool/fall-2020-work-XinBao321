@@ -27,7 +27,9 @@ public static void main(String[] args) {
     System.out.println(x2);
     System.out.println(y);
     System.out.println(y2);
+    test cases
     */
+
 
     //send data to methods to calculate distance
 

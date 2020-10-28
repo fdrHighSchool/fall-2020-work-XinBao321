@@ -41,11 +41,11 @@ public static double triangle(double base, double height){
 
 public static double herons(double length1,double length2, double length3){
   Scanner input = new Scanner(System.in);
-  System.out.println("What is the length of the first side?");
+  System.out.println("What is the length of the first side of herons triangle?");
   length1 = input.nextDouble();
-  System.out.println("What is the length of the second side?");
+  System.out.println("What is the length of the second side of herons triangle?");
   length2 = input.nextDouble();
-  System.out.println("What is the length of the third side?");
+  System.out.println("What is the length of the third side of herons triangle?");
   length3 = input.nextDouble();
   double cool =(length1 + length2 + length3)/2;
   double area = Math.sqrt(cool*(cool - length1)*(cool - length2)*(cool - length3));
@@ -60,7 +60,7 @@ public static double circle(double radius, double area){
  return area;  // return statement
 } // close method for circle
 
-  public static double cube(double s, double areaCube){
+public static double cube(double s, double areaCube){
     Scanner input = new Scanner(System.in);
     System.out.println("Enter the side of the cube ");
     s = input.nextDouble();
@@ -68,31 +68,33 @@ public static double circle(double radius, double area){
     return areaCube;  // return statement
   } //close method for cube
 
-  public static double triangularPrism(double length3, double base, double height, double volumeTri, double areaTri ){
+public static double triangularPrism(double length3, double base, double height, double volumeTri, double areaTri ){
     Scanner input = new Scanner(System.in);
     System.out.println("What is the length of the triangleprism? ");
     length3 = input.nextDouble();
-    System.out.println("What is the base of the triangleprism? ");
+    System.out.println("What is the base of the triangle ?");
     base = input.nextDouble();
-    System.out.println("What is the height of the triangleprism? ");
-    height = input.nextDouble();
+    System.out.println("What is the height of the triangle ?");
+    height  = input.nextDouble();
+    areaTri = base * height /2;
     volumeTri = areaTri * length3;
     return volumeTri;  // return statement
   }// close method for triangularprism
 
-  public static double rectangularprism(double length4, double width3, double height2, double volumeRect){
+public static double rectangularprism(double length2, double width2, double height2, double volumeRect){
     Scanner input = new Scanner(System.in);
     System.out.println("What is the length of the rectangular prism?");
-    length4 = input.nextDouble();
+    length2 = input.nextDouble();
     System.out.println("What is the width of the rectangular prism?");
-    width3 = input.nextDouble();
+    width2 = input.nextDouble();
     System.out.println("What is the height of the rectangular prism?");
     height2 = input.nextDouble();
-    volumeRect = length4 * width3 * height2;
+    double areaRectangle = length2 * width2;
+    volumeRect = areaRectangle * height2;
     return volumeRect;  // return statement
   }  //close method for rectangularprism
 
-    public static double sphere(double radius, double volumeSphere,double volumeSphere1){
+public static double sphere(double radius, double volumeSphere,double volumeSphere1){
       Scanner input = new Scanner(System.in);
       System.out.println("What is the radius of the sphere?");
       radius = input.nextDouble();
@@ -101,13 +103,14 @@ public static double circle(double radius, double area){
       return volumeSphere;  // return statement
  } // close method for sphere
 
-    public static double cylinder(double radius, double h, double volumeCylinder){
+public static double cylinder(double radius, double h, double volumeCylinder){
       Scanner input = new Scanner(System.in);
       System.out.println("What is the radius of the cylinder?");
       radius = input.nextDouble();
+      double area = Math.PI * Math.pow(radius, 2);
       System.out.println("What is the height of the cylinder?");
       h = input.nextDouble();
-      volumeCylinder = Math.pow(radius,2) *  h * Math.PI;
+      volumeCylinder = area * h;
       return volumeCylinder;  // return statement
     }// close method for cylinder
 }//close class
