@@ -1,16 +1,21 @@
 import java.util.Scanner;
-public class FracCalc {
-
+public class Main{
+  //FracCalc
     /**
      * Prompts user for input, passes that input to produceAnswer, then outputs the result.
      * @param args - unused
      */
     public static void main(String[] args){
-      Scanner input = new Scanner(System.in);
-      System.out.print("Welcome to fraction calculator! Please enter a problem: ");
-      String userInput = input.nextLine();
+      Scanner user = new Scanner(System.in);
+      System.out.print("Enter your fractions  ");
+      String userInput = user.nextLine();
+      String answer = produceAnswer(userInput);
+      System.out.println(answer);
 
-        System.out.println(produceAnswer(userInput));
+
+
+
+
 
         // TODO: Read the input from the user and call produceAnswer with an equation
         // Checkpoint 1: Create a Scanner, read one line of input, pass that input to produceAnswer, print the result.
@@ -25,7 +30,15 @@ public class FracCalc {
      *      Example: return ==> "1_1/4"
      */
     public static String produceAnswer(String input){
-          String replace = input;
+      int space = input.indexOf(" ");
+      int lastIndex = input.length();
+      String operand1 = input.substring(0, space);
+      String operator = input.substring(space + 1, space + 2);
+      String operand2 = input.substring(space + 2, lastIndex);
+      return operand2;
+
+
+
         // TODO: Implement this function to produce the solution to the input
         // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
         // Checkpoint 2: Return the second operand as a string representing each part.
@@ -36,7 +49,7 @@ public class FracCalc {
         // Final project: All answers must be reduced.
         //               Example "4/5 * 1_2/4" returns "1_1/5".
 
-        return "";
+
     }//end produceAnswer method
 
     // TODO: Fill in the space below with helper methods
@@ -49,7 +62,7 @@ public class FracCalc {
      * @return The GCD.
      */
     public static int greatestCommonDivisor(int a, int b){
-
+      return 0;
     }//end greatestCommonDivisor method
 
     /**
@@ -60,7 +73,7 @@ public class FracCalc {
      * @return The LCM.
      */
     public static int leastCommonMultiple(int a, int b){
-
+      return 0;
     }//end leastCommonMultiple
 
 }//end class
