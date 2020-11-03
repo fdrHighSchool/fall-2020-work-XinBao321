@@ -7,10 +7,17 @@ public class Main{
      */
     public static void main(String[] args){
       Scanner user = new Scanner(System.in);
-      System.out.print("Enter your fractions  ");
-      String userInput = user.nextLine();
-      String answer = produceAnswer(userInput);
-      System.out.println(answer);
+
+    System.out.print("Enter your fractions problem:");
+    String userInput = user.nextLine();
+    String answer = produceAnswer(userInput);
+    //whole loop until user type quit
+    while(!userInput.equalsIgnoreCase("quit")){
+    System.out.println(answer);
+    System.out.print("Enter your fractions  ");
+    userInput = user.nextLine();
+  } //end while loop
+}//end main
 
 
 
