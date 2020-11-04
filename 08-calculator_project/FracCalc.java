@@ -7,27 +7,23 @@ public class Main{
      */
     public static void main(String[] args){
       Scanner user = new Scanner(System.in);
+      System.out.println("Welcome to FracCalc!");
+      System.out.println("Type an equation:");
+      String userInput = user.nextLine();
+      System.out.println("Tye the word quit to leave! :)");
+      //while loop until user type quit
+      while(!userInput.equalsIgnoreCase("quit")){
+      System.out.println(produceAnswer(userInput));
+      System.out.print("Enter another equation!:");
+      userInput = user.nextLine();
 
-    System.out.print("Enter your fractions problem:");
-    String userInput = user.nextLine();
-    String answer = produceAnswer(userInput);
-    //whole loop until user type quit
-    while(!userInput.equalsIgnoreCase("quit")){
-    System.out.println(answer);
-    System.out.print("Enter your fractions  ");
-    userInput = user.nextLine();
-  } //end while loop
-}//end main
+    }//end of while loop
+   }//end main
 
-
-
-
-
-
-        // TODO: Read the input from the user and call produceAnswer with an equation
+        // TODO:Read the input from the user and call produceAnswer with an equation
         // Checkpoint 1: Create a Scanner, read one line of input, pass that input to produceAnswer, print the result.
         // Checkpoint 2: Accept user input multiple times.
-    }//end main method
+
 
     /**
      * produceAnswer - This function takes a String 'input' and produces the result.
@@ -41,9 +37,41 @@ public class Main{
       int lastIndex = input.length();
       String operand1 = input.substring(0, space);
       String operator = input.substring(space + 1, space + 2);
-      String operand2 = input.substring(space + 2, lastIndex);
-      return operand2;
+      String operand2 = input.substring(space + 3, lastIndex);
+      //return operand2;
+      //checkpoint 1 complete
+      String numerator = findNumerator(operand2);
+      String Whole = findWhole(operand2);
+      String denominator = findDenominator(operand2);
+      String checkPoint2 = "Whole:" + Whole + " Numerator:" + numerator + " Denominator:" + denominator;
+      //System.out.println(Whole, Numerator, denominator);
+       return checkPoint2; //checkpoint 2 complete
 
+    } //end produceAnswer method
+
+    public static String findWhole(String find){
+      // 4421_1/3    1234/12     5821
+      if(find.contains("_")){ //if it is a mixed number
+       return find.substring(0, find.indexOf("_")); //return everything from beginning until seeing “_”
+    } //end if statement
+      if(find.contains("/")){
+       return "0";  //if it is a fraction return 0 as whole number
+    } //end if statement
+      else return find; //if there is no fraction sign or mixed number, everything else is whole number
+    }//end of findWhole method
+
+    public static String findNumerator(String find){
+      //3_5/8   233/1   42821
+      if(find.contains("_")){  //if it is a mixed number
+        return find.substring(find.indexOf("_") + 1,find.indexOf("/"));
+         //add one because there is a space between two the operator and the sign
+        //numerator is everything in front of the "_" sign
+      }else if(find.contains("/")){
+        return find.substring(0, find.indexOf("/")); //get everything before the "/"
+        }else{
+        return "0"; //if there is no fraction or mixed number return 0 as numerator
+        } //end of else statement
+    }//end of findNumerator method
 
 
         // TODO: Implement this function to produce the solution to the input
@@ -57,7 +85,7 @@ public class Main{
         //               Example "4/5 * 1_2/4" returns "1_1/5".
 
 
-    }//end produceAnswer method
+
 
     // TODO: Fill in the space below with helper methods
 
