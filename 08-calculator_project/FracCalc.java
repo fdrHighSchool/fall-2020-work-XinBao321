@@ -73,6 +73,31 @@ public class Main{
         } //end of else statement
     }//end of findNumerator method
 
+    public static String findNumerator(String find){
+     //3_5/8   233/1   42821
+     if(find.contains("_")){  //if it is a mixed number
+       return find.substring(find.indexOf("_") + 1,find.indexOf("/"));
+       //add one because there is a space between two the operator and the sign
+       //numerator is everything in front of the "_" sign
+      }else if(find.contains("/")){
+       return find.substring(0, find.indexOf("/")); //get everything before the "/"
+       }else{
+       return "0"; //if there is no fraction or mixed number return 0 as numerator
+    } //end of else statement
+   }//end of findNumerator method
+
+   public static String findDenominator(String find){
+     //1_7/2   3125/42   41236
+     if(find.contains("/")){
+       return find.substring(find.indexOf("/") + 1);
+       //add one to get rid of the "/" sign
+       //get everything after the "/"
+       }else{
+       return "1"; //You can't have zero as an denominator!
+       }//end of else statement
+   }//end of findDenominator method
+} //end class
+
 
         // TODO: Implement this function to produce the solution to the input
         // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
