@@ -5,20 +5,23 @@ public class Main{
      * Prompts user for input, passes that input to produceAnswer, then outputs the result.
      * @param args - unused
      */
-    public static void main(String[] args){
-      Scanner user = new Scanner(System.in);
-      System.out.println("Welcome to FracCalc!");
-      System.out.println("Type an equation:");
-      String userInput = user.nextLine();
-      System.out.println("Tye the word quit to leave! :)");
-      //while loop until user type quit
-      while(!userInput.equalsIgnoreCase("quit")){
-      System.out.println(produceAnswer(userInput));
-      System.out.print("Enter another equation!:");
-      userInput = user.nextLine();
+     public static void main(String[] args){
+     Scanner user = new Scanner(System.in);
+     boolean continues = true;
+      //whole loop until user type quit
 
-    }//end of while loop
-   }//end main
+     System.out.println("Welcome to FracCalc!");
+     while(continues == true){
+     System.out.println("Type an equation:");
+     System.out.println("Or type the word quit to leave! :)");
+     String userInput = user.nextLine();
+     if(userInput.equalsIgnoreCase("quit")){
+        continues = false;
+        }else{
+        System.out.println(produceAnswer(userInput));
+        }
+      }
+    }// end main
 
         // TODO:Read the input from the user and call produceAnswer with an equation
         // Checkpoint 1: Create a Scanner, read one line of input, pass that input to produceAnswer, print the result.
