@@ -39,10 +39,11 @@ public class Main{
      * @return the result of the fraction after it has been calculated.
      *      Example: return ==> "1_1/4"
      */
-  // Name: reduceFraction()
-  // Purpose: to reduce the fraction
-  // Input: numerator as int and denominator as int
-  // Return: return the reduced fraction
+
+     // Name: produceAnswer()
+     // Purpose: identify the operator and fractions of user inputs and printing out the results
+     // Input: input of expression from user
+     // Return: return the numerator, denominator, and whole as checkpoint2(results)
     public static String produceAnswer(String input){
       int space = input.indexOf(" "); //when there is a space
       int lastIndex = input.length(); //from the last occurrence of the whole equation
@@ -64,7 +65,11 @@ public class Main{
       //All of the contains() method checks whether a string contains a sequence of characters
     } //end of produceAnswer method
 
-    public static String findWhole(String find){
+    // Name: findWhole()
+    // Purpose: To look for whole numbers inside a fraction
+    // Input: Two fractions strings from the user
+    // Return: If the fractions contains whole number and return results back to produceAnswer()
+   public static String findWhole(String find){
       // 4421_1/3    1234/12     5821
       if(find.contains("_")){ //if there is a "_" sign it means it is a mixed number
        return find.substring(0, find.indexOf("_"));
@@ -77,7 +82,11 @@ public class Main{
      //if there is no fraction sign or mixed number, everything else is whole number
     }//end of findWhole method
 
-    public static String findNumerator(String find){
+   // Name: findNumerator()
+   // Purpose: To look for numerator inside a fraction
+   // Input: Two fractions strings from the user
+   // Return: If the fractions contains numerator and return results back to produceAnswer()
+   public static String findNumerator(String find){
       //3_5/8   233/1   42821
       if(find.contains("_")){  //if it is a mixed number
         return find.substring(find.indexOf("_") + 1,find.indexOf("/"));
@@ -90,7 +99,11 @@ public class Main{
      } //end of else statement
     }//end of findNumerator method
 
-    public static String findDenominator(String find){
+   // Name: findDenominator
+   // Purpose: To look for denomator inside a fraction
+   // Input: Two fractions strings from the user
+   // Return: If the fractions contains denominator and return results back to produceAnswer()
+   public static String findDenominator(String find){
       //1_7/2   3125/42   41236
       if(find.contains("/")){
         return find.substring(find.indexOf("/") + 1);//the denomator is after the "/" sign
@@ -101,7 +114,8 @@ public class Main{
         }//end of else statement
     }//end of findDenominator method
 
-    public static String mixedFraction(String find){
+
+   public static String mixedFraction(String find){
       return "0";
     } //end mixedFraction method
   }//end class
