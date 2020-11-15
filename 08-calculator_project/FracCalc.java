@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class Main{
+
   //FracCalc
     /**
      * Prompts user for input, passes that input to produceAnswer, then outputs the result.
@@ -18,7 +19,8 @@ public class Main{
       if(userInput.equalsIgnoreCase("quit")){
         continues = false; //if user type quit the
         }else{ //otherwise print out answer
-      System.out.println(produceAnswer(userInput) + "\n");//results
+
+        System.out.println(produceAnswer(userInput) + "\n");//results
 
 
         } //end else statement
@@ -34,7 +36,7 @@ public class Main{
       int space = input.indexOf(" ");
       int lastIndex = input.length();
       String operand1 = input.substring(0, space);
-       //start at index zero until seeing a space
+      //start at index zero until seeing a space
       String operator = input.substring(space + 1, space + 2);
       String operand2 = input.substring(space + 3, lastIndex);
       //return operand2;
@@ -58,39 +60,47 @@ public class Main{
         String finalAnswer = "";
       if(operator.contains("*")){
         answer = "The multiply results are: " + multiply(numerator1, numerator2,  whole1, whole2, denominator1, denominator2, improperFraction(numerator1,whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
-        return answer;
-
+        finalAnswer = reducingFractions(answer);
+        return finalAnswer;
 
       } //end of "*" if statment
 
       else if(operator.contains("+") && denominator1 != denominator2){
         answer = additionDifferentDenominator(numerator1,numerator2,whole1, whole2,denominator1,denominator2, improperFraction(numerator1,whole1,denominator1), improperFraction(numerator2, whole2, denominator2));
-        System.out.println(answer);
-        finalAnswer = Integer.toString(gcf(findNumerator(answer),findDenominator(answer)));
-        //"The addition results are: "
+        finalAnswer = reducingFractions(answer);
         return finalAnswer;
+
       }//end of + with different denominator if statement
 
       else if(operator.contains("+") && denominator1 == denominator2){
-        answer = "The addition results are: " + additionSameDenominator(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1),improperFraction(numerator2, whole2, denominator2));
-        return answer;
-      }//end of + with same denominator if statement
+        answer = additionSameDenominator(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1),improperFraction(numerator2, whole2, denominator2));
+        finalAnswer = reducingFractions(answer);
+        return finalAnswer;
+
+      }//end of if statement + with same denominator
       else if(operator.contains("/")){
-         answer = "The divison resuts are: " + division(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
-         return answer;
+         answer = division(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
+         finalAnswer = reducingFractions(answer);
+         return finalAnswer;
+
       }//end of division method
       else if(operator.contains("-") && denominator1 == denominator2){
-        answer = "The subtraction results are: " + subtractionSameDenominator(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
-        return answer;
-      }
+        answer = subtractionSameDenominator(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
+        finalAnswer = reducingFractions(answer);
+        return finalAnswer;
+
+      }//end of if statement - with same denominator
       else if(operator.contains("-") && denominator1 != denominator2){
-        answer = "The subtraction results are: " + subtractionDifferentDenominator(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
-        return answer;
-      }
+        answer = subtractionDifferentDenominator(numerator1,numerator2, whole1, whole2, denominator1, denominator2, improperFraction(numerator1, whole1, denominator1), improperFraction(numerator2, whole2, denominator2));
+        finalAnswer = reducingFractions(answer);
+        return finalAnswer;
+      }////end of if statement - with different denominator
 
         return checkPoint2;//checkpoint 2 complete
 
     }//end of produceAnswer method
+
+
 
 
   // All of the contains() method checks whether a string contains a sequence of characters
@@ -103,13 +113,13 @@ public class Main{
       //test cases 4421_1/3    1234/12     5821
       if(find.contains("_")){ //if there is a "_" sign it means it is a mixed number
        return Integer.parseInt(find.substring(0, find.indexOf("_")));
-       //return everything from beginning until seeing “_” which are the whole numbers
+       //return everything from beginning until seeing "_" which are the whole numbers
     }
-      if(find.contains("/")){
+      while(find.contains("/")){
        return 0; //if it is a fraction return 0 as whole number
     }
-      else return 0;
-       //if there is no fraction sign or mixed number, everything else is whole number
+      return 0;
+    //if there is no fraction sign or mixed number, everything else is whole number
     }//end of findWhole method
 
   // Name: findNumerator()
@@ -119,14 +129,17 @@ public class Main{
 
     public static int findNumerator(String find){
       //test cases 3_5/8   233/1   42821
+      int indexSlash = find.indexOf("/");
       if(find.contains("_")){  //if it is a mixed number
         return Integer.parseInt(find.substring(find.indexOf("_") + 1,find.indexOf("/")));
         //add one because there is a space between two of the operator
        }else if(find.contains("/")){
+
         return Integer.parseInt(find.substring(0, find.indexOf("/")));
        }else{
-        return Integer.parseInt(find); //if there is no fraction or mixed number return the whole thing back
-      }
+        return Integer.parseInt(find);
+         //if there is no fraction or mixed number return the whole thing back
+       }
     }//end of findNumerator method
 
   // Name: findDenominator
@@ -292,7 +305,7 @@ public class Main{
       return answer;
     }//end subtractionDifferentDenominator method
 
-  public static String subtractionSameDenominator(int numerator1, int numerator2, int whole1,int whole2, int denominator1, int denominator2, int improperFraction1, int improperFraction2){
+    public static String subtractionSameDenominator(int numerator1, int numerator2, int whole1,int whole2, int denominator1, int denominator2, int improperFraction1, int improperFraction2){
     int firstDenominator = 0;
     int firstNumerator = 0;
     String answer = "";
@@ -390,54 +403,73 @@ public class Main{
      return convertMixNumber1;
    } //end of convertMixNumber method
 
-
+  // Name:
+  // Purpose:
+  // Input:
+  // Return:
 
     public static int gcf(int numerator1, int denominator1){
-     if(numerator1 == 0){
-       return denominator1;
-     }
-     //return gcf(numerator1, denominator1 % numerator1);
-
-  }
-   //System.out.printf("GCF is: ", denominator1);
-}//end class
-
-
-        // TODO: Implement this function to produce the solution to the input
-        // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
-        // Checkpoint 2: Return the second operand as a string representing each part.
-        //               Example "4/5 * 1_2/4" returns "whole:1 numerator:2 denominator:4".
-        // Checkpoint 3: Evaluate the formula and return the result as a fraction.
-        //               Example "4/5 * 1_2/4" returns "6/5".
-        //               Note: Answer does not need to be reduced, but it must be correct.
-        // Final project: All answers must be reduced.
-        //               Example "4/5 * 1_2/4" returns "1_1/5".
-
+      //look for the biggest number even if it is negative
+      numerator1 = Math.abs(numerator1);
+      denominator1 = Math.abs(denominator1);
+      int greatestNumber = 0;
+      //numerator should be bigger than denominator to get gcf
+      if(denominator1 > numerator1){
+        greatestNumber = numerator1;
+        numerator1 = denominator1;
+      }
+      //when remainder isn't zero
+      while(denominator1 != 0){
+        greatestNumber = denominator1;
+        denominator1 = numerator1 % denominator1;
+        //numerator divide denominator gets gcf
+        numerator1 = greatestNumber;
+      }
+        return numerator1;
+      }//end of gcf method
 
 
 
-    // TODO: Fill in the space below with helper methods
 
-    /**
-     * greatestCommonDivisor - Find the largest integer that evenly divides two integers.
-     *      Use this helper method in the Final Checkpoint to reduce fractions.
-     * @param a - First integer.
-     * @param b - Second integer.
-     * @return The GCD.
-     */
-    /*public static int greatestCommonDivisor(int a, int b){
-      return 0;
-    }//end greatestCommonDivisor method
+    public static String reducingFractions(String answer){
+      //strings that could be useful
+      String fractionRemainder = "";
+      String finalAnswer = "";
+      //get the gcf of the two numbers
+      int remainder = 0;
+      int numerator1 =  findNumerator(answer) / gcf(findNumerator(answer),findDenominator(answer));
+      //System.out.println(answer);
+      //System.out.println(findNumerator(answer));
+      //System.out.println(findDenominator(answer));
+      int denominator1 =  findDenominator(answer) / gcf(findNumerator(answer), findDenominator(answer));
+      int wholeNumber = numerator1;
+      //
+      if(Integer.toString(numerator1).contains("-") && Integer.toString(denominator1).contains("-")){
+       //two negative = postive number
+       numerator1 = Math.abs(numerator1);
+       denominator1 = Math.abs(denominator1);
+       }//see if denominator or numerator is bigger
 
-    /**
-     * leastCommonMultiple - Find the smallest integer that can be evenly divided by two integers.
-     *      Use this helper method in Checkpoint 3 to evaluate expressions.
-     * @param a - First integer.
-     * @param b - Second integer.
-     * @return The LCM.
-     */
-     public static int leastCommonMultiple(int a, int b){
-      return 0;
-    }//end leastCommonMultiple
+      if(Math.abs(numerator1) > Math.abs(denominator1)){
+        remainder = numerator1 % denominator1;
+        wholeNumber = numerator1 / denominator1;
+        //when remained isn't zero it can still be reduce
+      if(remainder != 0){
+          //when both numerator and whole number is negative it will be postive
+      if(Integer.toString(remainder).contains("-") && Integer.toString(wholeNumber).contains("-")){
+         fractionRemainder = Integer.toString(remainder).replace("-","");
+         remainder = Integer.parseInt(fractionRemainder);
+       }//end of if statement about checking whole is negative or not
+        finalAnswer = (wholeNumber + "_" + remainder + "/" + denominator1);
+        return finalAnswer;
+       }//end of if statmenet about numerator greater than denominator
 
-}//end class
+      }//end of if statement of absolue value of numerator and denominator
+       if(denominator1 == 1){
+        return Integer.toString(wholeNumber);
+        }
+        finalAnswer = (numerator1 + "/" + denominator1);
+        return finalAnswer;
+     }//end of reducing method
+
+    }//end class
