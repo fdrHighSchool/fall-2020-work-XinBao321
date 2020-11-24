@@ -441,25 +441,18 @@ public class FracCalc{
     public static int gcf(int numerator1, int denominator1){
       //gcf must be at least 1
       //gcf should be smaller than the numerator and the denominator
-      int potentialGCF = 2;
-      int greatestNumber = 0;
+      int greatestNumber = Math.min(numerator1, denominator1);
       int gcf = 1;
-      //check the absolute value of numerator and denominator to see which one is bigger
-      if(Math.abs(numerator1) > Math.abs(denominator1)){
-        greatestNumber = Math.abs(numerator1);
-      }else
-       if(Math.abs(numerator1) < Math.abs(denominator1)){
-        greatestNumber = Math.abs(denominator1);
-      }//end if method for comparing numerator and denominator
+      //Get the greatestNumber
 
-      while(potentialGCF < greatestNumber){
-      //when numerator has a remainder of 0 that means it might be the gcf
-        if(numerator1 % potentialGCF == 0 && denominator1 % potentialGCF  == 0){
-          gcf = potentialGCF;
-      }//end if statment
-        potentialGCF++;
-      }//end while statement
-      return gcf;
+      for(int i = greatestNumber; i != 1; i-- ){
+        //when numerator has a remainder of 0 that means it might be the gcf
+        if(numerator1 % greatestNumber == 0 && denominator1 % greatestNumber  == 0){
+          gcf = greatestNumber;
+        }//end if statment about getting the gcf
+          return gcf;
+      }//end of for statement
+          return 1;
     }//end of gcf method
 
 
@@ -470,50 +463,75 @@ public class FracCalc{
 
     public static String reducingFractions(String answer){
       /* Debugging codes
-        System.out.println(answer);
-        System.out.println(findNumerator(answer));
-        System.out.println(findDenominator(answer));
-        System.out.println(denominator1);
-      */
+     System.out.println(answer);
+     System.out.println(findNumerator(answer));
+     System.out.println(findDenominator(answer));
+     System.out.println(denominator1);
+     */
       //strings that could be useful
       String fractionRemainder = "";
       String finalAnswer = "";
       int remainder = 0;
+      int result;
       //get the gcf of the two numbers
       int numerator1 =  findNumerator(answer) / gcf(findNumerator(answer),findDenominator(answer));
       int denominator1 =  findDenominator(answer) / gcf(findNumerator(answer), findDenominator(answer));
       //System.out.println(gcf(findNumerator(answer),findDenominator(answer)));
       int wholeNumber = numerator1;
-      //negative number cases
-      if(Integer.toString(numerator1).contains("-") && Integer.toString(denominator1).contains("-")){
-       //two negative sign = postive number
-       numerator1 = Math.abs(numerator1);
-       denominator1 = Math.abs(denominator1);
-       }//end of if statement to see if denominator or numerator is bigger
+      //
+   if(Integer.toString(numerator1).contains("-") && Integer.toString(denominator1).contains("-")){
+    //two negative sign = postive number
+    numerator1 = Math.abs(numerator1);
+    denominator1 = Math.abs(denominator1);
+    }//end of if statement to see if denominator or numerator is bigger
 
-      if(Math.abs(numerator1) > Math.abs(denominator1)){
-        remainder = numerator1 % denominator1;
-        wholeNumber = numerator1 / denominator1;
-        //when remaider isn't zero it means that it can still be reduce
-      if(remainder != 0){
-          //when both numerator and whole number is negative it will be postive
-      if(Integer.toString(remainder).contains("-") && Integer.toString(wholeNumber).contains("-")){
-         fractionRemainder = Integer.toString(remainder).replace("-","");
-         remainder = Integer.parseInt(fractionRemainder);
-       }//end of if statement about checking whole is negative or not
-         finalAnswer = (wholeNumber + "_" + remainder + "/" + denominator1);
-         return finalAnswer;
-       }//end of if statmenet about numerator greater than denominator
+   if(Math.abs(numerator1) > Math.abs(denominator1)){
+     remainder = numerator1 % denominator1;
+     wholeNumber = numerator1 / denominator1;
+     //when remaider isn't zero it means that it can still be reduce
+   if(remainder != 0){
+     //when both numerator and whole number is negative it will be postive
+   if(Integer.toString(remainder).contains("-") && Integer.toString(wholeNumber).contains("-")){
+      fractionRemainder = Integer.toString(remainder).replace("-","");
+      remainder = Integer.parseInt(fractionRemainder);
+    }//end of if statement about checking whole is negative or not
+     finalAnswer = (wholeNumber + "_" + remainder + "/" + denominator1);
+     //System.out.println("3");
+     return finalAnswer;
+    }//end of if statmenet about numerator greater than denominator
 
-      if(denominator1 == 1){
-        return Integer.toString(wholeNumber);
-      }//end of if statment when denominator shouldn't be print out
-     }//end of aboslue value if numerator or denominator or the same
-        finalAnswer = (numerator1 + "/" + denominator1);
-      //if there are no whole numbers just return fraction instead of mixed number
-        return finalAnswer;
-    }//end of reducing method
-  }//end class
+    if(denominator1 == 1){
+     return Integer.toString(wholeNumber);
+    }//end of if statment when denominator shouldn't be print out
+
+    }//end of aboslue value if numerator or denominator or the same
+
+    if(numerator1 == 0){
+       finalAnswer = "0";
+       return finalAnswer;
+     }//end of statement about numerator being zero
+    if(denominator1 == 1){
+       return Integer.toString(wholeNumber);
+     }//end of if statement about printing out denominator as one
+
+    if(denominator1 < 0){
+      fractionRemainder = Integer.toString(denominator1).replace("-", "");
+      denominator1 = Integer.parseInt(fractionRemainder);
+      numerator1 *= -1;
+      finalAnswer = (numerator1 + "/" + denominator1);
+      return finalAnswer;
+     }// if denominator is less than zero it should be print out in the numerator
+    if(Math.abs(numerator1) == Math.abs(denominator1)){
+       result = numerator1 / denominator1;
+       return Integer.toString(result);
+     }//end of cases that deal with same numerator and denominator
+
+     finalAnswer = (numerator1 + "/" + denominator1);
+     return finalAnswer;
+  }//end of reducing method
+
+ }//end class
+
 
 
 
