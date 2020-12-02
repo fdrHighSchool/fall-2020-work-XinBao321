@@ -20,6 +20,9 @@ public class Day1 {
         if(convert.equals(downFloor)){
           floor--;
         } //end
+          if(floor == -1){
+            System.out.println(f + 1);
+          }
       }//end loop
 
       System.out.println("The floor is:" + floor);
