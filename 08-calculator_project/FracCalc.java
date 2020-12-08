@@ -445,7 +445,7 @@ public class FracCalc{
       int gcf = 1;
       //Get the greatestNumber
 
-      for(int i = greatestNumber; i != 1; i-- ){
+      for(int i = greatestNumber; i != 0; i-- ){
         //when numerator has a remainder of 0 that means it might be the gcf
         if(numerator1 % greatestNumber == 0 && denominator1 % greatestNumber  == 0){
           gcf = greatestNumber;
