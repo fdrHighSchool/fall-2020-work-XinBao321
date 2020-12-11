@@ -1,4 +1,4 @@
-public class Day12020{
+public class Day22020{
   public static void main(String[] args) {
 
   }//end class

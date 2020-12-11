@@ -26,5 +26,6 @@ public class Day1 {
       }//end loop
 
       System.out.println("The floor is:" + floor);
+      input.close();
     }//end main
 }//end class

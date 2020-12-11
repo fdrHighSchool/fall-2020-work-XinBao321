@@ -20,6 +20,7 @@ class Math {
     System.out.println("\nThis is the taxiCab calculator!");
     System.out.println("\nThe distance for taxicab is " + taxiCab(1.0,1.0,1.0,1.0,1.0));
     input.close();
+
   }
   //taxiCab formula：|x2-x1| + |y2-y1|
   public static double taxiCab(double x1,double x2, double y1, double y2, double distance1){
