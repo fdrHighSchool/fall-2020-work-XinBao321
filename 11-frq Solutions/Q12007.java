@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Q12007{
   public static void main(String[] args) {
+     //int randomInt = (int)(Math.random() * (max - min + 1) + min); use this 
 
 
     //PLAN
@@ -49,19 +50,17 @@ int answer;
 
 public static int [] firstNumSelfDivisors(int numbers, int userTimes){
    int array [] = new int[numbers];
-   int index;
-   int answer;
-   for(int i = 0; array.length > i; i++ ){
-
-      if(selfDivsor(numbers) == true){
-        array[i] = numbers;
-        numbers++;
-        i++;
+   int numberStore = 0;
+   int start = 0;
+   int nextNumber = start;
+   while(userTimes > numberStore){
+      if(selfDivsor(nextNumber)){
+        array[numberStore] = nextNumber;
+        numberStore++;
       }
-
+      nextNumber++;
     }
 
       return array;
  }//end firstNumSelfDivisors method
-
-}
+}//end class

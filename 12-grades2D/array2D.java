@@ -53,7 +53,7 @@ class array2D {
   }
   public static double[] compare(double[] array) {
      Arrays.sort(array);
-     System.out.println(array);
+     //System.out.println(Arrays.toString(array));
      return array;
   }
 }
