@@ -13,6 +13,12 @@
     student1.addGrade(29);
     student1.addGrade(69);
     student1.addGrade(114);
+    student1.addGrade(32);
+    student1.addGrade(15);
+    student1.addGrade(220);
+    student1.addGrade(14);
+    student1.addGrade(16);
+    student1.addGrade(19);
   } //end main method
 
  } // end class

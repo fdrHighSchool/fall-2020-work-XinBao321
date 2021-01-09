@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Student{
  // instance varaibles
 
@@ -32,21 +33,24 @@ public class Student{
    int index = 0;
    int lowestGrade = 0;
    boolean replace = false;
+
+
    for(int i = 0; i < this.grades.length; i++){
      if(this.grades[i] == 0){
-       index = i;
+       lowestGrade = index;
        replace = true;
-     } // end if statement
-   } //end for loop
+     }// end if statement
+   else{
 
-   if(replace == true){
-     this.grades[index] = grade;
-   }
-     System.out.println(Arrays.toString(this.grades));
+   if(this.grades[index] < this.grades[lowestGrade]){
+        lowestGrade = this.grades[index];
+       } //end if statement
+   } //end else statment
 
-
-   //System.out.println(Arrays.toString(this.grades));
- } //end of addGrade method
+      this.grades[lowestGrade] = grade;
+  }// end for loop
+   System.out.println(Arrays.toString(this.grades));
+ } // end of addGrade method
 
  public double calculateAverage(){
    return 0.0;
