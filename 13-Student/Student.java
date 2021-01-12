@@ -30,31 +30,32 @@ public class Student{
  } //end of getOsis method
 
  public void addGrade(int grade) {
-   int index = 0;
-   int lowestGrade = 0;
-   boolean replace = false;
+    int i = 0;
 
+    while (this.grades[i] != 0) {
+      i++;
+    }//end while loop
 
-   for(int i = 0; i < this.grades.length; i++){
-     if(this.grades[i] == 0){
-       lowestGrade = index;
-       replace = true;
-     }// end if statement
-   else{
+    this.grades[i] = grade;
+  }//end addGrade method
 
-   if(this.grades[index] < this.grades[lowestGrade]){
-        lowestGrade = this.grades[index];
-       } //end if statement
-   } //end else statment
-
-      this.grades[lowestGrade] = grade;
-  }// end for loop
+ public void displayGrades() {
    System.out.println(Arrays.toString(this.grades));
- } // end of addGrade method
+ } //end getGrades()
 
- public double calculateAverage(){
-   return 0.0;
- } //end of calculateAverage method
+ public double calculateAverage() {
+    double sum = 0.0;
+    for (double grade : this.grades) {
+      sum += grade;
+    } //end for loop
+    return sum / this.grades.length;
+  } //end calculateAverage()
+
+ public void fillArray() {
+   for (int i = 0; i < this.grades.length; i++) {
+     this.grades[i] = (int)(Math.random() * 46 + 55);
+   }// end for loop
+ }// end fillArray method
 
  public String toString() {
    return "Student: " + this.name + " Osis: " + this.osis;
